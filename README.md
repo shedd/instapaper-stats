@@ -46,6 +46,16 @@ and `graph.sh`:
     ~/.rvm/bin/ruby-1.9.3-p0 ./instapaper-stats.rb graph full.csv
     cp html/app.js /var/www/sites/stats/app.js
 
+## Setup
+
+This utility has been updated to use whenever to manage the cron jobs.
+
+The cron schedule is defined in config/schedule.rb
+
+Run the following to install the cron jobs:
+
+	whenever --update-crontab
+	
 
 ## License
 
