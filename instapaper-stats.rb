@@ -21,14 +21,14 @@ def get_instapaper_csv user, password
 
   body = ''
   agent.get(start_url) do |page|
-    login_result = page.form_with(action: '/user/login') { |search|
+    login_result = page.form_with(:action => '/user/login') { |search|
       search.username = user
       search.password = password
     }.submit
 
     overview_page = login_result.links[0].click
 
-    export_csv = overview_page.form_with(action: '/export/csv')
+    export_csv = overview_page.form_with(:action => '/export/csv')
     if export_csv
       csv_page = export_csv.submit
       body = csv_page.body
@@ -226,12 +226,12 @@ def graph file
 
   File.open(APP_OUT, 'w') do |f|
     f.write(Mustache.render(IO.read(APP_TMPL), {
-      max:           max,
-      categories:    categories.join(','),
-      total_data:    data['Total'],
-      unread_data:   data['Unread'],
-      archive_data:  data['Archive'],
-      starred_data:  data['Starred'],
+      :max          =>   max,
+      :categories   =>   categories.join(','),
+      :total_data   =>   data['Total'],
+      :unread_data  =>   data['Unread'],
+      :archive_data =>   data['Archive'],
+      :starred_data =>   data['Starred'],
     }))
   end
 end
