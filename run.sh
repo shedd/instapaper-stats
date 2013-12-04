@@ -4,4 +4,4 @@
 # see this page if your directory is a symlink: http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ruby $DIR/instapaper-stats.rb fetch $DIR/credentials.txt
+bundle exec ruby $DIR/instapaper-stats.rb fetch $DIR/credentials.txt
